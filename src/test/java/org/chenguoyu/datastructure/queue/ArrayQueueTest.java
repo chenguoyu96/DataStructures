@@ -5,7 +5,7 @@ package org.chenguoyu.datastructure.queue;
  * @date 2018-11-27
  * @program DataStructures
  */
-public class QueueTest {
+public class ArrayQueueTest {
     public static void main(String[] args) {
         ArrayQueue<Integer> queue = new ArrayQueue<>();
         for(int i = 0 ; i < 10 ; i ++){
