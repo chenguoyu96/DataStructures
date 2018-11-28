@@ -5,7 +5,7 @@ package org.chenguoyu.datastructure.stack;
  * @date 2018-11-27
  * @program DataStructures
  */
-public interface Stack<E> {
+public interface Stack<T> {
     /**
      * 获得元素个数
      *
@@ -25,19 +25,19 @@ public interface Stack<E> {
      *
      * @param e
      */
-    void push(E e);
+    void push(T e);
 
     /**
      * 将栈顶元素弹出
      *
      * @return
      */
-    E pop();
+    T pop();
 
     /**
      * 查看栈顶元素
      *
      * @return
      */
-    E peek();
+    T peek();
 }
