@@ -5,9 +5,9 @@ package org.chenguoyu.datastructure.queue;
  * @date 2018-11-27
  * @program DataStructures
  */
-public class ArrayQueueTest {
+public class LinkedListQueueTest {
     public static void main(String[] args) {
-        ArrayQueue<Integer> queue = new ArrayQueue<>();
+        LinkedListQueue<Integer> queue = new LinkedListQueue<>();
         for (int i = 0; i < 10; i++) {
             queue.enqueue(i);
             System.out.println(queue);
