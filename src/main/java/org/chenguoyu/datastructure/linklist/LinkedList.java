@@ -8,11 +8,11 @@ package org.chenguoyu.datastructure.linklist;
  * @program DataStructures
  */
 public class LinkedList<T> {
-    private class Node<T> {
-        public T value;
-        public Node next;
+    private class Node {
+        T value;
+        Node next;
 
-        public Node(T value, Node next) {
+        Node(T value, Node next) {
             this.value = value;
             this.next = next;
         }
@@ -21,7 +21,7 @@ public class LinkedList<T> {
             this(value, null);
         }
 
-        public Node() {
+        Node() {
             this(null, null);
         }
 
@@ -31,11 +31,11 @@ public class LinkedList<T> {
         }
     }
 
-    private Node<T> dummyHead, tail;
+    private Node dummyHead, tail;
     private int size;
 
     public LinkedList() {
-        dummyHead = new Node<>();
+        dummyHead = new Node();
         size = 0;
     }
 
@@ -59,11 +59,11 @@ public class LinkedList<T> {
         if (index > size || index < 0) {
             throw new IllegalArgumentException("index 必须小于等于size且大于0");
         }
-        Node<T> preNode = dummyHead;
+        Node preNode = dummyHead;
         for (int i = 0; i < index; i++) {
             preNode = preNode.next;
         }
-        preNode.next = new Node<>(e, preNode.next);
+        preNode.next = new Node(e, preNode.next);
         size++;
     }
 
@@ -71,7 +71,7 @@ public class LinkedList<T> {
         if (index > size || index < 0) {
             throw new ArrayIndexOutOfBoundsException("index 必须小于等于size且大于0");
         }
-        Node<T> preNode = dummyHead.next;
+        Node preNode = dummyHead.next;
         for (int i = 0; i < index; i++) {
             preNode = preNode.next;
         }
@@ -87,7 +87,7 @@ public class LinkedList<T> {
     }
 
     public void set(int index, T e) {
-        Node<T> preNode = dummyHead.next;
+        Node preNode = dummyHead.next;
         for (int i = 0; i < index; i++) {
             preNode = preNode.next;
         }
@@ -95,7 +95,7 @@ public class LinkedList<T> {
     }
 
     public boolean contain(T e) {
-        Node<T> preNode = dummyHead.next;
+        Node preNode = dummyHead.next;
         for (int i = 0; i < size; i++) {
             if (preNode.value.equals(e)) {
                 return true;
@@ -106,11 +106,11 @@ public class LinkedList<T> {
     }
 
     public T remove(int index) {
-        Node<T> preNode = dummyHead;
+        Node preNode = dummyHead;
         for (int i = 0; i < index; i++) {
             preNode = preNode.next;
         }
-        Node<T> removeNode = preNode.next;
+        Node removeNode = preNode.next;
         if (preNode.next != null) {
             preNode.next = removeNode.next;
             size--;
@@ -127,7 +127,7 @@ public class LinkedList<T> {
     }
 
     public void remove(T e) {
-        Node<T> preNode = dummyHead;
+        Node preNode = dummyHead;
         for (int i = 0; i < size; i++) {
             if (preNode.next.value.equals(e)) {
                 break;
