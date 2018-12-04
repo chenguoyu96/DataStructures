@@ -15,8 +15,8 @@ public class LinkedListStack<T> implements Stack<T> {
     }
 
     @Override
-    public int getSize() {
-        return linkedList.getSize();
+    public int size() {
+        return linkedList.size();
     }
 
     @Override
@@ -43,7 +43,7 @@ public class LinkedListStack<T> implements Stack<T> {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Stack [ ");
-        for (int i = 0; i < linkedList.getSize(); i++) {
+        for (int i = 0; i < linkedList.size(); i++) {
             sb.append(linkedList.get(i)).append(" ");
         }
         sb.append(" ]");

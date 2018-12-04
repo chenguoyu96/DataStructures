@@ -18,7 +18,7 @@ public class Array<T> {
         this(10);
     }
 
-    public int getSize() {
+    public int size() {
         return size;
     }
 

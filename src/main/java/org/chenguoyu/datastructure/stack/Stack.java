@@ -11,7 +11,7 @@ public interface Stack<T> {
      *
      * @return
      */
-    int getSize();
+    int size();
 
     /**
      * 判断栈是否为空

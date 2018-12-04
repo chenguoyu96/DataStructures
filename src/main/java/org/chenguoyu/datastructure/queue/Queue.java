@@ -11,7 +11,7 @@ public interface Queue<T> {
      *
      * @return
      */
-    int getSize();
+    int size();
 
     /**
      * 判断是否为空

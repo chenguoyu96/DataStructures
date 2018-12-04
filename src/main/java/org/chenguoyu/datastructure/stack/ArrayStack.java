@@ -27,8 +27,8 @@ public class ArrayStack<T> implements Stack<T> {
     }
 
     @Override
-    public int getSize() {
-        return array.getSize();
+    public int size() {
+        return array.size();
     }
 
     @Override
@@ -55,7 +55,7 @@ public class ArrayStack<T> implements Stack<T> {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Stack:[ ");
-        for (int i = 0; i < array.getSize(); i++) {
+        for (int i = 0; i < array.size(); i++) {
             sb.append(array.get(i)).append(" ");
         }
         sb.append(" ] Top");
