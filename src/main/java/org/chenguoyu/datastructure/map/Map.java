@@ -7,7 +7,7 @@ public interface Map<K, V> {
      * @param key
      * @param value
      */
-    void add(K key, V value);
+    void put(K key, V value);
 
     /**
      * @param key
@@ -26,12 +26,6 @@ public interface Map<K, V> {
      * @return
      */
     V get(K key);
-
-    /**
-     * @param key
-     * @param newValue
-     */
-    void set(K key, V newValue);
 
     /**
      * 获得元素个数

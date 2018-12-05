@@ -43,10 +43,12 @@ public class LinkedListMap<K, V> implements Map<K, V> {
     }
 
     @Override
-    public void add(K key, V value) {
-        boolean contains = contains(key);
-        if (!contains) {
+    public void put(K key, V value) {
+        Node node = getNode(key);
+        if (node == null) {
             addFirst(key, value);
+        } else {
+            node.value = value;
         }
     }
 
@@ -86,15 +88,6 @@ public class LinkedListMap<K, V> implements Map<K, V> {
     public V get(K key) {
         Node node = getNode(key);
         return node == null ? null : node.value;
-    }
-
-    @Override
-    public void set(K key, V newValue) {
-        Node node = getNode(key);
-        if (node != null) {
-            node.value = newValue;
-        }
-        throw new IllegalArgumentException(key + " doesn't exist!");
     }
 
     @Override

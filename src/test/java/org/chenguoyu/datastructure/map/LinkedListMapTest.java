@@ -20,9 +20,9 @@ public class LinkedListMapTest {
         LinkedListMap<String, Integer> map = new LinkedListMap<>();
         for (String word : words) {
             if (map.contains(word))
-                map.set(word, map.get(word) + 1);
+                map.put(word, map.get(word) + 1);
             else
-                map.add(word, 1);
+                map.put(word, 1);
         }
 
         System.out.println("Total different words: " + map.size());
