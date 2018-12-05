@@ -1,7 +1,6 @@
 package org.chenguoyu.datastructure.set;
 
 import com.sun.org.apache.bcel.internal.util.ClassPath;
-import org.apache.commons.io.IOUtils;
 import org.chenguoyu.datastructure.FileOperation;
 import org.junit.Test;
 
@@ -13,7 +12,7 @@ import java.util.List;
  * @date 2018-12-04
  * @program DataStructures
  */
-public class BSTSetTest {
+public class LinkedListSetTest {
     @Test
     public void main() throws IOException {
 
@@ -21,7 +20,7 @@ public class BSTSetTest {
         System.out.println(ClassPath.SYSTEM_CLASS_PATH.toString());
         List<String> words1 = FileOperation.readFile("pride-and-prejudice.txt");
         System.out.println("Total words: " + words1.size());
-        BSTSet<String> set1 = new BSTSet<>();
+        LinkedListSet<String> set1 = new LinkedListSet<>();
         for (String word : words1)
             set1.add(word);
         System.out.println("Total different words: " + set1.size());
@@ -31,7 +30,7 @@ public class BSTSetTest {
         System.out.println("A Tale of Two Cities");
         List<String> words2 = FileOperation.readFile("a-tale-of-two-cities.txt");
         System.out.println("Total words: " + words2.size());
-        BSTSet<String> set2 = new BSTSet<>();
+        LinkedListSet<String> set2 = new LinkedListSet<>();
         for (String word : words2)
             set2.add(word);
         System.out.println("Total different words: " + set2.size());
