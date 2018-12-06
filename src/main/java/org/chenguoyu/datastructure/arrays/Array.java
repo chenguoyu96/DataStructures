@@ -187,6 +187,15 @@ public class Array<T> {
         this.values = newDatas;
     }
 
+    public void swap(int n, int m) {
+        if (n < 0 || n >= size || m < 0 || m >= size) {
+            throw new IndexOutOfBoundsException();
+        }
+        T temp = values[n];
+        values[n] = values[m];
+        values[m] = temp;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
