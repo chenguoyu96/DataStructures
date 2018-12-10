@@ -3,6 +3,8 @@ package org.chenguoyu.datastructure.segmenttree;
 import java.util.function.BiFunction;
 
 /**
+ * 线段树
+ *
  * @author chenguoyu
  * @date 2018-12-06
  * @program DataStructures
@@ -85,11 +87,11 @@ public class SegmentTree<T> {
         if (queryL < 0 || queryR > size() || queryL > queryR) {
             throw new IllegalArgumentException("queryL或queryR是无效的");
         }
-        return query(0, 0, data.length, queryL, queryR);
+        return query(0, 0, data.length - 1, queryL, queryR);
     }
 
     private T query(int index, int l, int r, int queryL, int queryR) {
-        if (queryL == queryR) {
+        if (l == queryL && r == queryR) {
             return tree[index];
         }
         int mid = l + (r - l) / 2;
@@ -97,7 +99,7 @@ public class SegmentTree<T> {
         int rightChild = rightChild(index);
         if (queryL > mid) {
             return query(rightChild, mid + 1, r, queryL, queryR);
-        } else if (queryR < mid) {
+        } else if (queryR <= mid) {
             return query(leftChild, l, mid, queryL, queryR);
         }
         T right = query(rightChild, mid + 1, r, mid + 1, queryR);
