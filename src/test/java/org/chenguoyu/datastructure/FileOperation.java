@@ -20,7 +20,7 @@ public class FileOperation {
         try {
             String str = IOUtils.toString(FileOperation.class.getResourceAsStream("/" + filePath));
             List<String> words = new ArrayList<>();
-            StringTokenizer st = new StringTokenizer(str,"\\A\t\n\r\f");
+            StringTokenizer st = new StringTokenizer(str.toLowerCase(),"\\；\\'\\,\\*\\.\\”\\“\t\n\r\f");
             while (st.hasMoreElements()){
                 words.add(st.nextToken());
             }

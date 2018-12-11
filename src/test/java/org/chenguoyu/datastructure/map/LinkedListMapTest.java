@@ -26,9 +26,6 @@ public class LinkedListMapTest {
         }
 
         System.out.println("Total different words: " + map.size());
-        System.out.println("Frequency of PRIDE: " + map.get("pride"));
-        System.out.println("Frequency of PREJUDICE: " + map.get("prejudice"));
-
 
         System.out.println();
     }
