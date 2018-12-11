@@ -130,9 +130,9 @@ public class AVLTree<K extends Comparable, V> {
             return new Node(key, value);
         }
         if (key.compareTo(node.key) < 0) {
-            return put(node.left, key, value);
+            node.left =  put(node.left, key, value);
         } else if (key.compareTo(node.key) > 0) {
-            return put(node.right, key, value);
+            node.right = put(node.right, key, value);
         } else {
             node.value = value;
         }
