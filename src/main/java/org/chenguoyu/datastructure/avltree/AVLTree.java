@@ -130,7 +130,7 @@ public class AVLTree<K extends Comparable, V> {
             return new Node(key, value);
         }
         if (key.compareTo(node.key) < 0) {
-            node.left =  put(node.left, key, value);
+            node.left = put(node.left, key, value);
         } else if (key.compareTo(node.key) > 0) {
             node.right = put(node.right, key, value);
         } else {
@@ -307,8 +307,12 @@ public class AVLTree<K extends Comparable, V> {
         return node;
     }
 
-    public void remove(K key) {
+    public V remove(K key) {
         Node node = remove(root, key);
+        if (node == null) {
+            return null;
+        }
+        return node.value;
     }
 
     private Node remove(Node node, K key) {
