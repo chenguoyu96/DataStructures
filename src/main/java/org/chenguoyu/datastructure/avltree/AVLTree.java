@@ -138,16 +138,32 @@ public class AVLTree<K extends Comparable, V> {
         }
         node.height = Math.max(getHeight(node.left), getHeight(node.right)) + 1;
         int balanceFactor = getBalanceFactor(node);
-        //添加的元素在需要维护平衡性的节点的左侧的左侧
+        /*添加的元素在需要维护平衡性的节点的左侧的左侧
+         *         y                              x
+         *        / \                           /   \
+         *      x   T4     向右旋转 (y)        z     y
+         *     / \       - - - - - - - ->    / \   / \
+         *    z   T3                       T1  T2 T3 T4
+         *   / \
+         * T1   T2
+         */
         if (balanceFactor > 1 && getBalanceFactor(node.left) >= 0) {
             return rightRotate(node);
         }
-        //添加的元素在需要维护平衡性的节点的右侧的右侧
-        if (balanceFactor < -1 && getBalanceFactor(node.right) >= 0) {
+        /* 添加的元素在需要维护平衡性的节点的右侧的右侧
+         *     y                             x
+         *   /  \                          /   \
+         *  T1   x      向左旋转 (y)       y     z
+         *      / \   - - - - - - - ->   / \   / \
+         *    T2  z                     T1 T2 T3 T4
+         *       / \
+         *      T3 T4
+         */
+        if (balanceFactor < -1 && getBalanceFactor(node.right) <= 0) {
             return leftRotate(node);
         }
-        /*添加的元素在需要维护的平衡性节点的左侧的右侧
-         *先进行左旋转，然后进行右旋转
+        /* 添加的元素在需要维护的平衡性节点的左侧的右侧
+         * 先进行左旋转，然后进行右旋转
          *      y                             y                                z
          *    /  \                          /   \                            /   \
          *   x    T4      向左旋转 (y)      z     T4     向右旋转 (y)         x      y
@@ -160,8 +176,8 @@ public class AVLTree<K extends Comparable, V> {
             node.left = leftRotate(node.left);
             return rightRotate(node);
         }
-        /*添加的元素在需要维护的平衡性节点的右侧的左侧
-         *
+        /* 添加的元素在需要维护的平衡性节点的右侧的左侧
+         * 先进行右旋转，然后进行左旋转
          *      y                                   y                                       Z
          *     /  \                                /  \                                    /  \
          *    T1   x                              T1   z                                  y     x
@@ -170,7 +186,7 @@ public class AVLTree<K extends Comparable, V> {
          *      /  \                                     /  \
          *     T2  T3                                   T3  T4
          */
-        if (balanceFactor < -1 && getBalanceFactor(node.left) < 0) {
+        if (balanceFactor < -1 && getBalanceFactor(node.right) > 0) {
             node.right = rightRotate(node.right);
             return leftRotate(node);
         }
@@ -178,14 +194,8 @@ public class AVLTree<K extends Comparable, V> {
     }
 
     /**
-     *  对节点y进行向左旋转操作，返回旋转后新的根节点x
-     *     y                             x
-     *   /  \                          /   \
-     *  T1   x      向左旋转 (y)       y     z
-     *      / \   - - - - - - - ->   / \   / \
-     *    T2  z                     T1 T2 T3 T4
-     *       / \
-     *      T3 T4
+     * 对节点y进行向左旋转操作，返回旋转后新的根节点x
+     *
      * @param y
      * @return
      */
@@ -201,14 +211,8 @@ public class AVLTree<K extends Comparable, V> {
     }
 
     /**
-     *  对节点y进行向右旋转操作，返回旋转后新的根节点x
-     *         y                              x
-     *        / \                           /   \
-     *      x   T4     向右旋转 (y)        z     y
-     *     / \       - - - - - - - ->    / \   / \
-     *    z   T3                       T1  T2 T3 T4
-     *   / \
-     * T1   T2
+     * 对节点y进行向右旋转操作，返回旋转后新的根节点x
+     *
      * @param y
      * @return
      */
@@ -311,6 +315,7 @@ public class AVLTree<K extends Comparable, V> {
         if (node == null) {
             return null;
         }
+        Node resultNode = null;
         if (key.compareTo(node.key) < 0) {
             node.left = remove(node.left, key);
             return node;
@@ -320,17 +325,75 @@ public class AVLTree<K extends Comparable, V> {
         } else {
             if (node.left == null) {
                 size--;
-                return node.right;
+                resultNode = node.right;
             }
             if (node.right == null) {
                 size--;
-                return node.left;
+                resultNode = node.left;
             }
             Node minimum = minimum(node.right);
             minimum.left = node.left;
             minimum.right = removeMin(node.right);
-            return minimum;
+            resultNode = minimum;
         }
+        if (resultNode == null) {
+            return null;
+        }
+        resultNode.height = Math.max(getHeight(resultNode.left), getHeight(resultNode.right)) + 1;
+        int balanceFactor = getBalanceFactor(resultNode);
+        /*添加的元素在需要维护平衡性的节点的左侧的左侧
+         *         y                              x
+         *        / \                           /   \
+         *      x   T4     向右旋转 (y)        z     y
+         *     / \       - - - - - - - ->    / \   / \
+         *    z   T3                       T1  T2 T3 T4
+         *   / \
+         * T1   T2
+         */
+        if (balanceFactor > 1 && getBalanceFactor(resultNode.left) >= 0) {
+            return rightRotate(resultNode);
+        }
+        /* 添加的元素在需要维护平衡性的节点的右侧的右侧
+         *     y                             x
+         *   /  \                          /   \
+         *  T1   x      向左旋转 (y)       y     z
+         *      / \   - - - - - - - ->   / \   / \
+         *    T2  z                     T1 T2 T3 T4
+         *       / \
+         *      T3 T4
+         */
+        if (balanceFactor < -1 && getBalanceFactor(resultNode.right) <= 0) {
+            return leftRotate(resultNode);
+        }
+        /* 添加的元素在需要维护的平衡性节点的左侧的右侧
+         * 先进行左旋转，然后进行右旋转
+         *      y                             y                                z
+         *    /  \                          /   \                            /   \
+         *   x    T4      向左旋转 (y)      z     T4     向右旋转 (y)         x      y
+         *  /  \        - - - - - - - ->  /  \        - - - - - - - ->     /  \   / \
+         * T1   z                        x   T3                           T1  T2 T3 T4
+         *    /  \                      /  \
+         *   T2  T2                    T1  T2
+         */
+        if (balanceFactor > 1 && getBalanceFactor(resultNode.left) < 0) {
+            resultNode.left = leftRotate(resultNode.left);
+            return rightRotate(resultNode);
+        }
+        /* 添加的元素在需要维护的平衡性节点的右侧的左侧
+         * 先进行右旋转，然后进行左旋转
+         *      y                                   y                                       Z
+         *     /  \                                /  \                                    /  \
+         *    T1   x                              T1   z                                  y     x
+         *        /  \       向右旋转 (y)              /  \          向左旋转 (y)          /  \  /  \
+         *       z    T4   - - - - - - - ->          T2   x       - - - - - - - ->      T1  T2 T3 T4
+         *      /  \                                     /  \
+         *     T2  T3                                   T3  T4
+         */
+        if (balanceFactor < -1 && getBalanceFactor(resultNode.right) > 0) {
+            resultNode.right = rightRotate(resultNode.right);
+            return leftRotate(resultNode);
+        }
+        return resultNode;
     }
 
 
