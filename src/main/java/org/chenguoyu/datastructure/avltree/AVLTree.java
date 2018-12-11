@@ -146,6 +146,34 @@ public class AVLTree<K extends Comparable, V> {
         if (balanceFactor < -1 && getBalanceFactor(node.right) >= 0) {
             return leftRotate(node);
         }
+        /*添加的元素在需要维护的平衡性节点的左侧的右侧
+         *先进行左旋转，然后进行右旋转
+         *      y                             y                                z
+         *    /  \                          /   \                            /   \
+         *   x    T4      向左旋转 (y)      z     T4     向右旋转 (y)         x      y
+         *  /  \        - - - - - - - ->  /  \        - - - - - - - ->     /  \   / \
+         * T1   z                        x   T3                           T1  T2 T3 T4
+         *    /  \                      /  \
+         *   T2  T2                    T1  T2
+         */
+        if (balanceFactor > 1 && getBalanceFactor(node.left) < 0) {
+            node.left = leftRotate(node.left);
+            return rightRotate(node);
+        }
+        /*添加的元素在需要维护的平衡性节点的右侧的左侧
+         *
+         *      y                                   y                                       Z
+         *     /  \                                /  \                                    /  \
+         *    T1   x                              T1   z                                  y     x
+         *        /  \       向右旋转 (y)              /  \          向左旋转 (y)          /  \  /  \
+         *       z    T4   - - - - - - - ->          T2   x       - - - - - - - ->      T1  T2 T3 T4
+         *      /  \                                     /  \
+         *     T2  T3                                   T3  T4
+         */
+        if (balanceFactor < -1 && getBalanceFactor(node.left) < 0) {
+            node.right = rightRotate(node.right);
+            return leftRotate(node);
+        }
         return node;
     }
 
@@ -304,4 +332,6 @@ public class AVLTree<K extends Comparable, V> {
             return minimum;
         }
     }
+
+
 }
