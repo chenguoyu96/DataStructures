@@ -1,6 +1,6 @@
 package org.chenguoyu.datastructure.set;
 
-import org.chenguoyu.datastructure.binarysearchtree.BST;
+import org.chenguoyu.datastructure.tree.BST;
 
 /**
  * 用二分搜索树实现堆

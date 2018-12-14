@@ -1,4 +1,4 @@
-package org.chenguoyu.datastructure.binarysearchtree;
+package org.chenguoyu.datastructure.tree;
 
 import org.junit.Before;
 import org.junit.Test;

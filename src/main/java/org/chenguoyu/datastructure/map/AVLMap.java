@@ -1,6 +1,6 @@
 package org.chenguoyu.datastructure.map;
 
-import org.chenguoyu.datastructure.avltree.AVLTree;
+import org.chenguoyu.datastructure.tree.AVLTree;
 
 /**
  * 使用AVL实现Map

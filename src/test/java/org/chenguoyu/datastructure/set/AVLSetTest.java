@@ -1,10 +1,6 @@
-package org.chenguoyu.datastructure.avltree;
+package org.chenguoyu.datastructure.set;
 
 import org.chenguoyu.datastructure.FileOperation;
-import org.chenguoyu.datastructure.set.BSTSet;
-import org.chenguoyu.datastructure.set.LinkedListSet;
-import org.chenguoyu.datastructure.set.MapToSet;
-import org.chenguoyu.datastructure.set.Set;
 
 import java.util.List;
 
@@ -13,7 +9,7 @@ import java.util.List;
  * @date 2018-12-11
  * @program DataStructures
  */
-public class SetTest {
+public class AVLSetTest {
     private static double testSet(Set<String> set, String filename) {
         long startTime = System.nanoTime();
         System.out.println(filename);
@@ -31,18 +27,6 @@ public class SetTest {
     public static void main(String[] args) {
 
         String filename = "pride-and-prejudice.txt";
-
-        BSTSet<String> bstSet = new BSTSet<>();
-        double time1 = testSet(bstSet, filename);
-        System.out.println("BST Set: " + time1 + " s");
-
-        System.out.println();
-
-        LinkedListSet<String> linkedListSet = new LinkedListSet<>();
-        double time2 = testSet(linkedListSet, filename);
-        System.out.println("Linked List Set: " + time2 + " s");
-
-        System.out.println();
 
         MapToSet<String> avlSet = new MapToSet<>();
         double time3 = testSet(avlSet, filename);

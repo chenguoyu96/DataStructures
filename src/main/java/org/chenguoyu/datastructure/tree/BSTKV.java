@@ -1,4 +1,4 @@
-package org.chenguoyu.datastructure.binarysearchtree;
+package org.chenguoyu.datastructure.tree;
 
 /**
  * 键值对的二分搜索树

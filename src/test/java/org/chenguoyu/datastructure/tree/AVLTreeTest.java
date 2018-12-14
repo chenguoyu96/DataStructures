@@ -1,7 +1,8 @@
-package org.chenguoyu.datastructure.avltree;
+package org.chenguoyu.datastructure.tree;
 
 import org.chenguoyu.datastructure.FileOperation;
-import org.chenguoyu.datastructure.binarysearchtree.BSTKV;
+import org.chenguoyu.datastructure.tree.AVLTree;
+import org.chenguoyu.datastructure.tree.BSTKV;
 
 import java.util.Collections;
 import java.util.List;

@@ -1,4 +1,4 @@
-package org.chenguoyu.datastructure.avltree;
+package org.chenguoyu.datastructure.tree;
 
 import java.util.ArrayList;
 import java.util.List;

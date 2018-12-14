@@ -1,10 +1,6 @@
-package org.chenguoyu.datastructure.avltree;
+package org.chenguoyu.datastructure.map;
 
 import org.chenguoyu.datastructure.FileOperation;
-import org.chenguoyu.datastructure.map.AVLMap;
-import org.chenguoyu.datastructure.map.BSTMap;
-import org.chenguoyu.datastructure.map.LinkedListMap;
-import org.chenguoyu.datastructure.map.Map;
 
 import java.util.List;
 
@@ -13,7 +9,7 @@ import java.util.List;
  * @date 2018-12-11
  * @program DataStructures
  */
-public class MapTest {
+public class AVLMapTest {
     private static double testMap(Map<String, Integer> map, String filename) {
 
         long startTime = System.nanoTime();
@@ -37,18 +33,7 @@ public class MapTest {
     }
 
     public static void main(String[] args) {
-
         String filename = "pride-and-prejudice.txt";
-        BSTMap<String, Integer> bstMap = new BSTMap<>();
-        double time1 = testMap(bstMap, filename);
-        System.out.println("BST Map: " + time1 + " s");
-
-        System.out.println();
-        LinkedListMap<String, Integer> linkedListMap = new LinkedListMap<>();
-        double time2 = testMap(linkedListMap, filename);
-        System.out.println("Linked List Map: " + time2 + " s");
-
-        System.out.println();
 
         AVLMap<String, Integer> avlMap = new AVLMap<>();
         double time3 = testMap(avlMap, filename);

@@ -1,4 +1,4 @@
-package org.chenguoyu.datastructure.segmenttree;
+package org.chenguoyu.datastructure.tree;
 
 import java.util.function.BiFunction;
 

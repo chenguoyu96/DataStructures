@@ -1,4 +1,6 @@
-package org.chenguoyu.datastructure.segmenttree;
+package org.chenguoyu.datastructure.tree;
+
+import org.chenguoyu.datastructure.tree.SegmentTree;
 
 /**
  * @author chenguoyu
